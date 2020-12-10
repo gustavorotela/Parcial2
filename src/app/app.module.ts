@@ -47,6 +47,7 @@ import { DetalleAcatComponent } from './componentes/detalle-acat/detalle-acat.co
 import { NoTienePermisoComponent } from './componentes/no-tiene-permiso/no-tiene-permiso.component';
 import { DetalleUsuarioComponent } from './componentes/detalle-usuario/detalle-usuario.component';
 import { UsuarioTipoPipe } from './pipes/usuario-tipo.pipe';
+import { EstadoExamenPipe } from './pipes/estado-examen.pipe';
 
 var firebaseConfig = {
   apiKey: "AIzaSyB940hFSoe72VAn-8IMpe_-C_gTvJU_owo",
@@ -95,7 +96,8 @@ var firebaseConfig = {
     DetalleAcatComponent,
     NoTienePermisoComponent,
     DetalleUsuarioComponent,
-    UsuarioTipoPipe
+    UsuarioTipoPipe,
+    EstadoExamenPipe
   ],
   imports: [
     BrowserModule,

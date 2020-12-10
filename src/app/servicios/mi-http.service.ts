@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Materia } from '../clases/materia';
 import { Examen } from '../clases/examen';
 import { AngularFireStorage} from 'angularfire2/storage';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class MiHttpService {
   respuestasObservable : Observable<any>;
   usuario:Usuario;
 
-  constructor(public afAuth : AngularFireAuth, public afDB : AngularFireDatabase, public afStorage : AngularFireStorage) {
+  constructor(public afAuth : AngularFireAuth, public afDB : AngularFireDatabase, public afStorage : AngularFireStorage, private router:Router) {
     this.usuario = new Usuario();
   }
 
@@ -56,6 +57,13 @@ export class MiHttpService {
   esAdmin()
   {
     this.usuario = JSON.parse(localStorage.getItem("usuario"));
+    var aux = this.estaLogeado();
+    
+    if(aux == "no")
+    {
+      this.router.navigate(["/Login"]);
+      return false;
+    }
     if(this.usuario.tipo == 3)
       return true;
     else
@@ -65,6 +73,13 @@ export class MiHttpService {
   esProfesor()
   {
     this.usuario = JSON.parse(localStorage.getItem("usuario"));
+    var aux = this.estaLogeado();
+    
+    if(aux == "no")
+    {
+      this.router.navigate(["/Login"]);
+      return false;
+    }
     if(this.usuario.tipo == 2)
       return true;
     else

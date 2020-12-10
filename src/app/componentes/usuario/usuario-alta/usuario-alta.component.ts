@@ -42,14 +42,21 @@ export class UsuarioAltaComponent implements OnInit {
             this.emailExiste = true;
         }
         if(this.emailExiste){
-          //error
+          this.msgs = [];
+          this.msgs.push({severity:'error', summary:'Error', detail:'Este email ya fue registrado'});
         }
         else
         {
-          this.usuario.id = this.id;
-          this.miHttp.cargarUsuarioImagen(this.usuario,this.imagen);
-          setTimeout(() => this.miHttp.cargarUsuario(this.usuario,this.id.toString()),2000);
-          this.router.navigate(['/Login']);
+          if(this.usuario.tipo != 1 && this.usuario.tipo != 2) {
+            this.msgs = [];
+            this.msgs.push({severity:'error', summary:'Error', detail:'Debe seleccionar un tipo'});
+          }
+          else{
+            this.usuario.id = this.id;
+            this.miHttp.cargarUsuarioImagen(this.usuario,this.imagen);
+            setTimeout(() => this.miHttp.cargarUsuario(this.usuario,this.id.toString()),2000);
+            this.router.navigate(['/Login']);
+          }
         }
       }
     }

@@ -32,13 +32,13 @@ const routes: Routes = [
   {path: "BorrarAlumno", component:BorrarAlumnoComponent, canActivate: [AdminAuthGuard]},
   {path: "AltaAdministrador", component:AdministradorAltaComponent, canActivate: [AdminAuthGuard]},
   {path: "CargarExamen", component:CargarExamenComponent, canActivate: [ProfesorAuthGuard]},
-  {path: "InscripcionAlumno", component:InscripcionAlumnoComponent},
+  {path: "InscripcionAlumno", component:InscripcionAlumnoComponent, canActivate: [AuthGuard]},
   {path: "CargarExamen", component:CargarExamenComponent, canActivate: [ProfesorAuthGuard]},
-  {path: "AlumnosBorrados", component:AlumnosBorradosComponent},
+  {path: "AlumnosBorrados", component:AlumnosBorradosComponent, canActivate: [AuthGuard]},
   {path: "ListaUsuarios", component:ListadoUsuariosComponent, canActivate: [AdminAuthGuard]},
   {path: "ActasDeExamen", component:ActasDeExamenComponent, canActivate: [ProfesorAuthGuard]},
-  {path: "MostrarActas", component:MostrarActasComponent},
-  {path: "NoTienePermiso", component:NoTienePermisoComponent},
+  {path: "MostrarActas", component:MostrarActasComponent, canActivate: [AuthGuard]},
+  {path: "NoTienePermiso", component:NoTienePermisoComponent, canActivate: [AuthGuard]},
   {path: "**", component:PrincipalComponent, data: {animation: 'Principal'}, canActivate: [AuthGuard]}
 ];
 

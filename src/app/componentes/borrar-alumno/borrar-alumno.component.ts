@@ -20,12 +20,24 @@ export class BorrarAlumnoComponent implements OnInit {
   borrarAlumno(alumno)
   {
     for (let i = 0; i < this.listaMaterias.length; i++) {
-      for (let j = 0; j < this.listaMaterias[i].alumnos.length; j++) {
-        if(this.listaMaterias[i].alumnos[j].email == alumno.email)
-        {
-          this.listaMaterias[i].alumnos.splice(j,1);
-          this.miHttp.modificarMateria(this.listaMaterias[i],this.listaMaterias[i].id.toString())
+      try {
+        for (let j = 0; j < this.listaMaterias[i].alumnos.length; j++) {
+          if(this.listaMaterias[i].alumnos[j].email == alumno.email)
+          {
+            this.listaMaterias[i].alumnos.splice(j,1);
+            this.miHttp.modificarMateria(this.listaMaterias[i],this.listaMaterias[i].id.toString());
+          }
         }
+      }
+      catch(error){
+        try{
+          if(this.listaMaterias[i].alumnos.email == alumno.email)
+          {
+            this.listaMaterias[i].alumnos.splice(0,1);
+            this.miHttp.modificarMateria(this.listaMaterias[i],this.listaMaterias[i].id.toString());
+          }
+        }
+        catch(error){}
       }
     }
     let hoy = new Date();

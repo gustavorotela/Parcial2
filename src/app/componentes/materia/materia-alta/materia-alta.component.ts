@@ -14,9 +14,10 @@ export class MateriaAltaComponent implements OnInit {
   ocultar:false;
   id:number;
   listaProfesores = [];
-  emailProfesor;
+  emailProfesor = [];
   msgs : any = [];
   imagen : any;
+  existeEn:boolean = false;
 
   public files: NgxFileDropEntry[] = [];
   public imagenPreview : any;
@@ -27,17 +28,34 @@ export class MateriaAltaComponent implements OnInit {
 
   profesorSeleccionado(profesor)
   {
-    this.materia.profesor = this.materia.profesor || [];
-    this.materia.profesor.push(profesor);
-    this.emailProfesor = profesor.email;
+    this.existeEn = false;
+    try {
+      for (let i = 0; i < this.materia.profesor.length; i++) {
+        if(this.materia.profesor[i].email == profesor.email){
+          this.existeEn = true; 
+        }
+      }
+      if(this.existeEn == false)
+      {
+        this.materia.profesor = this.materia.profesor || [];
+        this.materia.profesor.push(profesor);
+        this.emailProfesor.push(profesor.email);
+      }
+    }
+    catch(error)
+    {
+      this.materia.profesor = this.materia.profesor || [];
+      this.materia.profesor.push(profesor);
+      this.emailProfesor.push(profesor.email);
+    }
   }
 
   guardarMateria()
   {
-    if(this.materia.cupo < 10)
+    if(this.materia.cupo < 10 || this.materia.cupo > 100)
     {
       this.msgs = [];
-      this.msgs.push({severity:'error', summary:'Error', detail:'El cupo debe ser mayor a 10.'});
+      this.msgs.push({severity:'error', summary:'Error', detail:'El cupo debe ser entre 10 y 100.'});
     }
     else
     {
@@ -56,13 +74,18 @@ export class MateriaAltaComponent implements OnInit {
         }
         else
         {
-          this.materia.id = this.id;
-          this.miHttp.cargarImagenMateria(this.materia,this.id.toString(),this.imagen);
-          setTimeout(() => this.miHttp.cargarMateria(this.materia,this.id.toString()),2000);
+          if (this.materia.anio < 2019 || this.materia.anio > 2022) {
+            this.msgs = [];
+            this.msgs.push({severity:'error', summary:'Error', detail:'El nombre es muy corto o tiene caracteres especiales'});
+          }
+          else{
+            this.materia.id = this.id;
+            this.miHttp.cargarImagenMateria(this.materia,this.id.toString(),this.imagen);
+            setTimeout(() => this.miHttp.cargarMateria(this.materia,this.id.toString()),2000);
+          }
         }
       }
     }
-    
   }
 
   public dropped(files: NgxFileDropEntry[]) {
