@@ -22,7 +22,18 @@
                         <option value="2">Profesor</option>
                     </select>
                 </div>
-            </div>   
+            </div>
+            <div class="overlay">
+                <a href="#" class="icon" title="User Profile">
+                  <i class="fa fa-user"></i>
+                </a>
+            </div>
+            <ngx-file-drop (onFileDrop)="dropped($event)" 
+                (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                  <button type="button" (click)="openFileSelector()">Browse Files</button>
+                </ng-template>
+            </ngx-file-drop>
         </div>
         <div class="container ui-g-12" style="text-align: center; font-size: 79%">
             <button mat-raised-button color="primary" (click)="registrar()">Registrarse</button>

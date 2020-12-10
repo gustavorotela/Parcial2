@@ -13,11 +13,12 @@
                 <th>Fecha borrado</th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-alumno>
-            <tr (click)="mostrarDetalle(materia)" role="button">
-                <td>{{alumno.email}}</td>
-                <td>{{alumno.fechaBorrado}}</td>
+        <ng-template pTemplate="body" let-usuario>
+            <tr (click)="mostrarDetalle(usuario)" role="button">
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.fechaBorrado}}</td>
             </tr>
         </ng-template>
     </p-table>
 </div>
+<app-detalle-usuario [usuario]="usuario"></app-detalle-usuario>

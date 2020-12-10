@@ -20,10 +20,18 @@ export class MiHttpService {
     this.usuario = new Usuario();
   }
 
+  cargarUsuarioImagen(usuario:Usuario,image)
+  {
+    this.afStorage.upload(usuario.id.toString(),image);
+  }
+
   cargarUsuario(usuario:Usuario,id:string)
   {
+    this.afStorage.ref(usuario.id.toString()).getDownloadURL().subscribe(url => { 
+      usuario.foto = url;
     const listadoUsuarios = this.afDB.list("/Usuarios/");
     listadoUsuarios.set(id,usuario);
+    });
   }
 
   traerUsuario()

@@ -42,6 +42,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  Rapido()
+  {
+    this.usuario.email = "gnrotela@yahoo.com.ar";
+    this.usuario.password = "123";
+  }
+
   ngOnInit(): void {
     this.miHttp.traerUsuario().subscribe( usuarios => {
       this.listaUsuarios = usuarios;

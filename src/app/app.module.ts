@@ -45,6 +45,8 @@ import { MostrarActasComponent } from './componentes/mostrar-actas/mostrar-actas
 import { MostrarNotasComponent } from './componentes/mostrar-notas/mostrar-notas.component';
 import { DetalleAcatComponent } from './componentes/detalle-acat/detalle-acat.component';
 import { NoTienePermisoComponent } from './componentes/no-tiene-permiso/no-tiene-permiso.component';
+import { DetalleUsuarioComponent } from './componentes/detalle-usuario/detalle-usuario.component';
+import { UsuarioTipoPipe } from './pipes/usuario-tipo.pipe';
 
 var firebaseConfig = {
   apiKey: "AIzaSyB940hFSoe72VAn-8IMpe_-C_gTvJU_owo",
@@ -91,7 +93,9 @@ var firebaseConfig = {
     MostrarActasComponent,
     MostrarNotasComponent,
     DetalleAcatComponent,
-    NoTienePermisoComponent
+    NoTienePermisoComponent,
+    DetalleUsuarioComponent,
+    UsuarioTipoPipe
   ],
   imports: [
     BrowserModule,
