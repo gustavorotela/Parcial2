@@ -1,0 +1,4 @@
+<app-menu></app-menu>
+<app-listado-de-asignaturas [profesor]="profesor" (emitirMateria)="materiaSeleccionada($event)"></app-listado-de-asignaturas>
+<app-listado-aprobacion-directa [examenes]="examenesMateria"></app-listado-aprobacion-directa>
+<app-listado-no-directa [examenes]="examenosMateriasNoDirecta"></app-listado-no-directa>

@@ -1,0 +1,31 @@
+
+<p-toolbar>
+    <div class="ui-toolbar-group-left">
+        <div>
+        <div *ngIf="usuario.tipo == 3"> <!--Administrador-->    
+            <button pButton type="button" label="Inicio"  routerLink="/Principal"></button>    
+            <button pButton type="button" label="Inscribir"  routerLink="/Inscripcion"></button>
+            <button pButton type="button" label="Borrar alumno" routerLink="/BorrarAlumno"></button>
+            <button pButton type="button" label="Nueva materia" routerLink="/AltaMateria"></button>
+            <button pButton type="button" label="Alta de adminis" routerLink="/AltaAdministrador"></button>
+            <button pButton type="button" label="Usuarios" routerLink="/AltaAdministrador"></button>
+        </div>
+        <div *ngIf="usuario.tipo == 1"> <!--Alumno-->
+            <button pButton type="button" label="Inicio"  routerLink="/Principal"></button>    
+            <button pButton type="button" label="Inscribirse a materia" routerLink="/InscripcionAlumno"></button>
+            <button pButton type="button" label="Ver actas" routerLink="/MostrarActas"></button>
+        </div>
+        <div *ngIf="usuario.tipo == 2"> <!--Profesor-->
+            <button pButton type="button" label="Inicio"  routerLink="/Principal"></button>    
+            <button pButton type="button" label="Actas de examen"  routerLink="/ActasDeExamen"></button>    
+            <button pButton type="button" label="Administrar mesas" routerLink="/MenuMesas"></button>
+            <button pButton type="button" label="Pedidos a realizar" routerLink="/PedidosARealizar"></button>
+        </div>
+        </div>  
+    </div>
+    <div class="ui-toolbar-group-right">
+        {{usuario.email}}
+        <button pButton type="button" label="Logout" (click)="deslogear()"></button>
+    </div>
+</p-toolbar>
+

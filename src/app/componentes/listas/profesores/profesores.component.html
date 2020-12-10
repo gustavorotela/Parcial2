@@ -1,0 +1,9 @@
+<ul class="list-group mb-3">
+    <div *ngFor="let profesor of listaProfesores">
+      <li class="list-group-item d-flex justify-content-between lh-condensed" (click)="SeleccionarProfesor(profesor)">
+        <div>
+          <h6 class="my-0">{{profesor.email}}</h6>
+        </div>
+      </li>
+    </div>
+</ul>

@@ -1,0 +1,23 @@
+<app-menu></app-menu>
+<div class="card">
+    <select name="" [(ngModel)]="tipoSeleccionado">
+        <option value="0">Todos</option>
+        <option value="1">Alumnos</option>
+        <option value="2">Profesores</option>
+        <option value="3">Administradores</option>
+    </select>
+    <p-table [value]="(listaUsuarios | tipoUsuario:tipoSeleccionado)" [scrollable]="true" scrollHeight="500px">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Email</th>
+                <th>Fecha borrado</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-alumno>
+            <tr (click)="mostrarDetalle(materia)" role="button">
+                <td>{{alumno.email}}</td>
+                <td>{{alumno.fechaBorrado}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -1,0 +1,41 @@
+<app-menu></app-menu>
+<p-table [value]="listaMaterias" [scrollable]="true" scrollHeight="500px">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Materia</th>
+            <th>Cuatrimestre</th>
+            <th>Año</th>
+            <th>Cupo</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-materia>
+        <tr>
+            <td>{{materia.nombre}}</td>
+            <td>{{materia.cuatrimestre}}</td>
+            <td>{{materia.anio}}</td>
+            <td>{{materia.cupo}}</td>
+            <td><button (click)="inscripcion(materia)">Inscribirse</button></td>
+        </tr>
+    </ng-template>
+</p-table>
+
+Materias inscriptas
+<p-table [value]="materiasInscriptas" [scrollable]="true" scrollHeight="500px">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Materia</th>
+            <th>Cuatrimestre</th>
+            <th>Año</th>
+            <th>Cupo</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-materia>
+        <tr>
+            <td>{{materia.nombre}}</td>
+            <td>{{materia.cuatrimestre}}</td>
+            <td>{{materia.anio}}</td>
+            <td>{{materia.cupo}}</td>
+        </tr>
+    </ng-template>
+</p-table>

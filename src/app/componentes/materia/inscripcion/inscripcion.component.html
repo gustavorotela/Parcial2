@@ -1,0 +1,48 @@
+<app-menu></app-menu>
+<p-table [value]="listaMaterias" [scrollable]="true" scrollHeight="500px">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Materia</th>
+            <th>Cuatrimestre</th>
+            <th>Año</th>
+            <th>Cupo</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-materia>
+        <tr (click)="seleccionarMateria(materia)" role="button">
+            <td>{{materia.nombre}}</td>
+            <td>{{materia.cuatrimestre}}</td>
+            <td>{{materia.anio}}</td>
+            <td>{{materia.cupo}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-table [value]="listaAlumnos" [scrollable]="true" scrollHeight="500px">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>email</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-alumno>
+        <tr (click)="agregarAlumno(alumno)" role="button">
+            <td>{{alumno.email}}</td>
+            <td></td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-table [value]="alumnosMateria" [scrollable]="true" scrollHeight="500px">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>email</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-alumno>
+        <tr (click)="agregarAlumno(alumno)" role="button">
+            <td>{{alumno.email}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<button (click)="guardarCambios()">Guardar materia</button>

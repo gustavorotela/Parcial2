@@ -1,0 +1,44 @@
+<app-menu></app-menu>
+<p-table [value]="listaMaterias" [scrollable]="true" scrollHeight="500px">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Materia</th>
+            <th>Cuatrimestre</th>
+            <th>Año</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-materia>
+        <tr>
+            <td>{{materia.nombre}}</td>
+            <td>{{materia.cuatrimestre}}</td>
+            <td>{{materia.anio}}</td>
+            <td><button (click)="seleccionarMateria(materia)">Seleccionar</button></td>
+        </tr>
+    </ng-template>
+</p-table>`
+Ingresar fecha del examen
+<input type="date" [(ngModel)]="examen.fecha">
+<div [hidden]="ocultarAlumnos">
+    <p-table [value]="listaAlumnos" [scrollable]="true" scrollHeight="500px">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-alumno>
+            <tr>
+                <td>{{alumno.email}}</td>
+                <td><button (click)="seleccionarAlumno(alumno)">Seleccionar</button></td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<div [hidden]="ocultarExamen">
+    <input type="number" [(ngModel)]="nota.nota">
+    <button (click)="cargarExamen()">Cargar examen</button>
+</div>
+
+<button (click)="finalizarCarga()">Finalizar Carga</button>

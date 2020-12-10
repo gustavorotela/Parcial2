@@ -1,0 +1,24 @@
+<app-menu></app-menu>
+<div class="card">
+    <p-table [value]="listaMaterias" [scrollable]="true" scrollHeight="500px">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nombre</th>
+                <th>Cuatrimestre</th>
+                <th>Año</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-materia>
+            <tr (click)="mostrarDetalle(materia)" role="button">
+                <td>{{materia.nombre}}</td>
+                <td>
+                <select name="select" class="form-control" [(ngModel)]="materia.cuatrimestre" disabled>
+                    <option value="1">Primer</option> 
+                    <option value="2">Segundo</option>
+                </select></td>
+                <td>{{materia.anio}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
